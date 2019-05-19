@@ -1,4 +1,7 @@
 import { imageObject } from "./imageObject"
+import fs from "fs"
+import path from "path"
+import config from "../../config/config"
 
 ///jest.mock("request-promise");
 
@@ -17,5 +20,6 @@ describe('resize image', () => {
     await imageObjectInstance.resizeFile()
 
     expect(true).toBe(imageObjectInstance.fileResizeExists())
+    fs.unlink(path.join(config.workingResizeFolder, imageRequest.fileNameResize))
   })
 })
