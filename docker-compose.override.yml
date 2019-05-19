@@ -1,0 +1,17 @@
+version: "2"
+
+services:
+  web:
+    build: .
+    command: npm run debug
+    volumes:
+      - ./dist:/server/dist
+      - ./public:/server/public
+      - ./views:/server/views
+    ports:
+      - "3000:3000"
+      - "5858:5858"
+    depends_on:
+     - db
+  db:
+    build: ./database-service

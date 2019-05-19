@@ -1,0 +1,12 @@
+version: "2"
+# this is an example for production run
+services:
+  web:
+    build: .
+    command: npm run
+    ports:
+      - "80:80"
+    depends_on:
+     - db
+  db:
+    build: ./database-service
